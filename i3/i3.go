@@ -88,9 +88,14 @@ func (i3 *I3) listen() {
 		if err != nil {
 			continue
 		}
-		if event.Change == "focus" {
+		if event.Change == "init" {
+			num := event.Current.Num
+			name := i3.names[num]
+			if name != "" {
+				i3.runCommand(fmt.Sprintf("rename workspace %d to %d:%s", num, num, name))
+			}
+		} else if event.Change == "focus" {
 			i3.currWorkspace = event.Current.Num
-			i3.RenameWorkspace(i3.names[i3.currWorkspace])
 		}
 	}
 }

@@ -6,13 +6,16 @@ import (
 	"os/exec"
 )
 
-func Prompt(args []string) string {
+func Run(args []string) string {
+  fmt.Fprintf(os.Stderr, "error: %v\n", args)
 	cmd := exec.Command("dmenu", args...)
 	data, err := cmd.CombinedOutput()
 	out := string(data)
 	if err != nil {
-		fmt.Println(out)
-    fmt.Fprintf(os.Stderr, "error: %s", err)
+    if out != "" {
+		  fmt.Println(out)
+    }
+    fmt.Fprintf(os.Stderr, "error: %s\n", err)
     return ""
 	}
 	return out

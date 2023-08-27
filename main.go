@@ -73,7 +73,7 @@ func main() {
 	for {
 		select {
 		case _ = <-signals:
-			name := dmenu.Prompt(dmenuArgs)
+			name := dmenu.Run(dmenuArgs)
 			name = strings.TrimSpace(name)
 			for _, workspace := range workspaces {
 				if workspace.Focused {

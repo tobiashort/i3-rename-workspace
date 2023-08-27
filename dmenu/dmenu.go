@@ -7,7 +7,6 @@ import (
 )
 
 func Run(args []string) string {
-  fmt.Fprintf(os.Stderr, "error: %v\n", args)
 	cmd := exec.Command("dmenu", args...)
 	data, err := cmd.CombinedOutput()
 	out := string(data)

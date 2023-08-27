@@ -42,7 +42,6 @@ func main() {
   if *sb != "" {
     dmenuArgs = append(dmenuArgs, "-sb", *sb)
   }
-  fmt.Fprintf(os.Stderr, "dmenuArgs: %v\n", dmenuArgs)
   
 	workspaces = i3.GetWorkspaces()
 

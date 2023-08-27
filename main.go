@@ -15,8 +15,33 @@ import (
 var workspaces map[int]i3.Workspace
 
 func main() {
-  var dmenuArgs = *flag.String("dmenuArgs", "-p 'Rename:'", "dmenu command")
+  var p = *flag.String("p", "Rename:", "prompt")
+  var fn = *flag.String("fn", "", "font")
+  var nf = *flag.String("nf", "", "normal foreground color")
+  var nb = *flag.String("nb", "", "normal background color")
+  var sf = *flag.String("sf", "", "selected foreground color")
+  var sb = *flag.String("sb", "", "selected background color")
   flag.Parse()
+
+  var dmenuArgs = make([]string, 0)
+  if p != "" {
+    dmenuArgs = append(dmenuArgs, "-p", p)
+  }
+  if fn != "" {
+    dmenuArgs = append(dmenuArgs, "-fn", fn)
+  }
+  if nf != "" {
+    dmenuArgs = append(dmenuArgs, "-nf", nf)
+  }
+  if nb != "" {
+    dmenuArgs = append(dmenuArgs, "-nb", nb)
+  }
+  if sf != "" {
+    dmenuArgs = append(dmenuArgs, "-sf", sf)
+  }
+  if sb != "" {
+    dmenuArgs = append(dmenuArgs, "-sb", sb)
+  }
   
 	workspaces = i3.GetWorkspaces()
 

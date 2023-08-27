@@ -6,6 +6,7 @@ import (
 	"os/signal"
 	"strings"
 	"syscall"
+  "flag"
 
 	"github.com/t-hg/i3-rename-workspace/dmenu"
 	"github.com/t-hg/i3-rename-workspace/i3"
@@ -14,6 +15,9 @@ import (
 var workspaces map[int]i3.Workspace
 
 func main() {
+  var dmenuArgs = *flag.String("dmenu", "-p 'Rename:'", "dmenu command")
+  flag.Parse()
+  
 	workspaces = i3.GetWorkspaces()
 
 	i3.OnWorkspaceChange(
@@ -44,7 +48,7 @@ func main() {
 	for {
 		select {
 		case _ = <-signals:
-			name := dmenu.Prompt("Rename:")
+			name := dmenu.Prompt(dmenuArgs)
 			name = strings.TrimSpace(name)
 			for _, workspace := range workspaces {
 				if workspace.Focused {

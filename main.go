@@ -15,7 +15,7 @@ import (
 var workspaces map[int]i3.Workspace
 
 func main() {
-  var dmenuArgs = *flag.String("dmenu", "-p 'Rename:'", "dmenu command")
+  var dmenuArgs = *flag.String("dmenuArgs", "-p 'Rename:'", "dmenu command")
   flag.Parse()
   
 	workspaces = i3.GetWorkspaces()

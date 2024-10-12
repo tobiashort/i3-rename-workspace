@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os/exec"
 
-	"github.com/t-hg/i3-rename-workspace/must"
+	"github.com/tobiashort/i3-rename-workspace/must"
 )
 
 type Workspace struct {

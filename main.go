@@ -8,8 +8,8 @@ import (
 	"syscall"
   "flag"
 
-	"github.com/t-hg/i3-rename-workspace/dmenu"
-	"github.com/t-hg/i3-rename-workspace/i3"
+	"github.com/tobiashort/i3-rename-workspace/dmenu"
+	"github.com/tobiashort/i3-rename-workspace/i3"
 )
 
 var workspaces map[int]i3.Workspace

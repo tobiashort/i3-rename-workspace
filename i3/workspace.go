@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os/exec"
 
-	"github.com/tobiashort/i3-rename-workspace/must"
+	"github.com/tobiashort/utils-go/must"
 )
 
 type Workspace struct {
@@ -50,9 +50,10 @@ func OnWorkspaceChange(init func(workspace Workspace), focus func(workspace Work
 				Current Workspace
 			}
 			must.Do(json.Unmarshal(data, &event))
-			if event.Change == "init" {
+			switch event.Change {
+			case "init":
 				init(event.Current)
-			} else if event.Change == "focus" {
+			case "focus":
 				focus(event.Current)
 			}
 		}
